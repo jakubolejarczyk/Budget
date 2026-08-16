@@ -3,6 +3,10 @@
     <BuildType Name="Default" />
     <Platform Name="Default" />
   </Configurations>
+  <Project Path="Budget.Migrations/Budget.Migrations.ssmssqlproj" Type="4f2e2c19-372f-40d8-9fa7-9d2138c6997a">
+    <Platform Project="?" />
+    <Build Project="false" />
+  </Project>
   <Project Path="Budget.SQL/Budget.SQL.ssmssqlproj" Type="4f2e2c19-372f-40d8-9fa7-9d2138c6997a">
     <Platform Project="?" />
     <Build Project="false" />

@@ -21,35 +21,17 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="1_create_empty_budget_database.sql">
+        <FileNode Name="select_all_budgets.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>1_create_empty_budget_database.sql</FullPath>
+          <FullPath>select_all_budgets.sql</FullPath>
         </FileNode>
-        <FileNode Name="2_create_categories_table.sql">
+        <FileNode Name="select_all_categories.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>2_create_categories_table.sql</FullPath>
-        </FileNode>
-        <FileNode Name="3_add_category_updated_at_default_value.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>3_add_category_updated_at_default_value.sql</FullPath>
-        </FileNode>
-        <FileNode Name="4_create_budget_table.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>4_create_budget_table.sql</FullPath>
-        </FileNode>
-        <FileNode Name="5_rename_budget_table_to_budgets.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>5_rename_budget_table_to_budgets.sql</FullPath>
+          <FullPath>select_all_categories.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
