@@ -33,6 +33,12 @@
           <AssociatedConnUserName />
           <FullPath>2_create_categories_table.sql</FullPath>
         </FileNode>
+        <FileNode Name="3_add_category_updated_at_default_value.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>3_add_category_updated_at_default_value.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
