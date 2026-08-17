@@ -21,17 +21,17 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="select_all_budgets.sql">
+        <FileNode Name="select_amount_to_be_distributed.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>select_all_budgets.sql</FullPath>
+          <FullPath>select_amount_to_be_distributed.sql</FullPath>
         </FileNode>
-        <FileNode Name="select_all_categories.sql">
+        <FileNode Name="select_category_budgets_amount.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>select_all_categories.sql</FullPath>
+          <FullPath>select_category_budgets_amount.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

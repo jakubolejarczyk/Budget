@@ -1,6 +1,9 @@
 -- Migration 6
 -- Create badtegory budget table
 
+USE budget;
+GO
+
 CREATE TABLE category_budgets (
 	category_budget_id INT IDENTITY(1, 1),
 	budget_id INT NOT NULL,
