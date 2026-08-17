@@ -1,13 +1,20 @@
 <Solution>
   <Configurations>
+    <BuildType Name="Debug" />
     <BuildType Name="Default" />
-    <Platform Name="Default" />
+    <BuildType Name="Release" />
   </Configurations>
+  <Project Path="Budget.App/Budget.App.pyproj" Type="888888a0-9f3d-457c-b088-3a5042f75d52" Id="c8c637f4-d381-4295-b66e-a993907700c6">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Project="false" />
+  </Project>
   <Project Path="Budget.Migrations/Budget.Migrations.ssmssqlproj" Type="4f2e2c19-372f-40d8-9fa7-9d2138c6997a">
+    <BuildType Project="Default" />
     <Platform Project="?" />
     <Build Project="false" />
   </Project>
   <Project Path="Budget.SQL/Budget.SQL.ssmssqlproj" Type="4f2e2c19-372f-40d8-9fa7-9d2138c6997a">
+    <BuildType Project="Default" />
     <Platform Project="?" />
     <Build Project="false" />
   </Project>
