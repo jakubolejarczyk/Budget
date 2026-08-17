@@ -34,8 +34,8 @@
           <FullPath>select_category_budgets_amount.sql</FullPath>
         </FileNode>
         <FileNode Name="select_expense_amount_remains.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>select_expense_amount_remains.sql</FullPath>
         </FileNode>
