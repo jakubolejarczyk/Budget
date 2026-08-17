@@ -33,6 +33,12 @@
           <AssociatedConnUserName />
           <FullPath>select_category_budgets_amount.sql</FullPath>
         </FileNode>
+        <FileNode Name="select_expense_amount_remains.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>select_expense_amount_remains.sql</FullPath>
+        </FileNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
