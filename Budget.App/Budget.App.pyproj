@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8101bb93-b22f-4167-8243-475365f47519</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Budget.App.py</StartupFile>
+    <StartupFile>src\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Budget.App.py" />
+    <Compile Include="src\budget\app\budget_app.py" />
+    <Compile Include="src\budget\app\__init__.py" />
+    <Compile Include="src\budget\__init__.py" />
+    <Compile Include="src\main.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\budget\" />
+    <Folder Include="src\budget\app\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
