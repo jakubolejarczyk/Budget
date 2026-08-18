@@ -6,6 +6,7 @@ class BudgetApp:
 
     def run(self):
         while self.budget_store.is_running:
+            # TODO: Split the code into two logics enter command and select program
             self.budget_store.command = input("Enter command: ")
             if self.budget_store.command == "exit":
                 self.budget_store.is_running = False
