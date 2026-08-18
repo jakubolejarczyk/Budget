@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<SqlWorkbenchSqlProject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Budget.Migrations">
+<SqlWorkbenchSqlProject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Budget.SQL.Migration">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
         <ConnectionNode Name="jakub\SQLEXPRESS:JAKUB\jakub">
-          <Created>2026-08-16T20:45:19.6726898+02:00</Created>
+          <Created>2026-08-18T23:15:48.1370471+02:00</Created>
           <Type>SQL</Type>
           <Server>jakub\SQLEXPRESS</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
-          <InitialDB>budget</InitialDB>
+          <InitialDB>master</InitialDB>
           <LoginTimeout>15</LoginTimeout>
           <TrustServerCertificate>True</TrustServerCertificate>
           <EncryptionOption>True</EncryptionOption>
@@ -22,8 +22,8 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="1_create_empty_budget_database.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:jakub\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>jakub\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>1_create_empty_budget_database.sql</FullPath>
         </FileNode>
