@@ -23,6 +23,8 @@
   <ItemGroup>
     <Compile Include="src\budget\app\budget_app.py" />
     <Compile Include="src\budget\app\__init__.py" />
+    <Compile Include="src\budget\store\budget_store.py" />
+    <Compile Include="src\budget\store\__init__.py" />
     <Compile Include="src\budget\__init__.py" />
     <Compile Include="src\main.py" />
   </ItemGroup>
@@ -30,6 +32,7 @@
     <Folder Include="src\" />
     <Folder Include="src\budget\" />
     <Folder Include="src\budget\app\" />
+    <Folder Include="src\budget\store\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
