@@ -1,4 +1,4 @@
-from const.color_const import MY_COLOR
+from const import MY_COLOR
 
 def log(message, color):
     prefix = "";

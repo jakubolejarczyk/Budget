@@ -32,6 +32,7 @@
     <Compile Include="src\budget\app\budget_app.py" />
     <Compile Include="src\budget\app\__init__.py" />
     <Compile Include="src\budget\const\color_const.py" />
+    <Compile Include="src\budget\const\__init__.py" />
     <Compile Include="src\budget\service\command_service.py" />
     <Compile Include="src\budget\util\log_util.py" />
     <Compile Include="src\budget\util\__init__.py" />
