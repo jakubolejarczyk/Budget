@@ -24,10 +24,17 @@
     <Folder Include="src\" />
     <Folder Include="src\budget\" />
     <Folder Include="src\budget\app\" />
+    <Folder Include="src\budget\const\" />
+    <Folder Include="src\budget\util\" />
+    <Folder Include="src\budget\service\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\budget\app\budget_app.py" />
     <Compile Include="src\budget\app\__init__.py" />
+    <Compile Include="src\budget\const\color_const.py" />
+    <Compile Include="src\budget\service\command_service.py" />
+    <Compile Include="src\budget\util\log_util.py" />
+    <Compile Include="src\budget\util\__init__.py" />
     <Compile Include="src\budget\__init__.py" />
     <Compile Include="src\budget\main.py" />
   </ItemGroup>

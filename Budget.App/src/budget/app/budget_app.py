@@ -1,5 +1,10 @@
+from service.command_service import CommandService
+
 class BudgetApp:
+    def __init__(self):
+        self.commandService = CommandService()
+
     def run(self):
         while True:
-             command = input("Enter the command: ")
-             print(f"You entered the command: {command}")
+             command = input("> ")
+             self.commandService.run_command(command)
