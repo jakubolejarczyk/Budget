@@ -1,4 +1,4 @@
-from service.command_service import CommandService
+from service import CommandService
 
 class BudgetApp:
     def __init__(self):
@@ -6,5 +6,5 @@ class BudgetApp:
 
     def run(self):
         while True:
-             command = input("> ")
-             self.commandService.run_command(command)
+            command = self.commandService.get_command()
+            self.commandService.run_command(command)

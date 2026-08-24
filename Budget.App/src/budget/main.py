@@ -1,3 +1,3 @@
-from app.budget_app import BudgetApp
+from app import BudgetApp
 
 BudgetApp().run()
