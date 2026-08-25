@@ -1,6 +1,0 @@
-pyproject.toml
-budget_app.egg-info/PKG-INFO
-budget_app.egg-info/SOURCES.txt
-budget_app.egg-info/dependency_links.txt
-budget_app.egg-info/requires.txt
-budget_app.egg-info/top_level.txt
