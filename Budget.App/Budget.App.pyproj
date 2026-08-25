@@ -26,14 +26,20 @@
     <Folder Include="src\budget\" />
     <Folder Include="src\budget\app\" />
     <Folder Include="src\budget\const\" />
+    <Folder Include="src\budget\config\" />
+    <Folder Include="src\budget\model\" />
     <Folder Include="src\budget\util\" />
     <Folder Include="src\budget\service\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\budget\app\budget_app.py" />
     <Compile Include="src\budget\app\__init__.py" />
+    <Compile Include="src\budget\config\program_config.py" />
+    <Compile Include="src\budget\config\__init__.py" />
     <Compile Include="src\budget\const\color_const.py" />
     <Compile Include="src\budget\const\__init__.py" />
+    <Compile Include="src\budget\model\program_model.py" />
+    <Compile Include="src\budget\model\__init__.py" />
     <Compile Include="src\budget\service\command_service.py" />
     <Compile Include="src\budget\service\__init__.py" />
     <Compile Include="src\budget\util\color_util.py" />
