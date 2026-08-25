@@ -37,6 +37,7 @@
     <Compile Include="src\budget\service\command_service.py" />
     <Compile Include="src\budget\service\__init__.py" />
     <Compile Include="src\budget\util\color_util.py" />
+    <Compile Include="src\budget\util\list_util.py" />
     <Compile Include="src\budget\util\logger_util.py" />
     <Compile Include="src\budget\util\__init__.py" />
     <Compile Include="src\budget\__init__.py" />

@@ -7,4 +7,5 @@ class BudgetApp:
     def run(self):
         while True:
             command = self.commandService.get_command()
-            self.commandService.run_command(command)
+            command_data = self.commandService.parse_command(command)
+            print(command_data)
