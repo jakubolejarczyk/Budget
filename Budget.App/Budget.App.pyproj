@@ -12,6 +12,7 @@
     <Name>Budget.App</Name>
     <RootNamespace>Budget.App</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,7 @@
     <Folder Include="src\budget\const\" />
     <Folder Include="src\budget\config\" />
     <Folder Include="src\budget\model\" />
+    <Folder Include="src\budget\program\" />
     <Folder Include="src\budget\util\" />
     <Folder Include="src\budget\service\" />
   </ItemGroup>
@@ -40,6 +42,9 @@
     <Compile Include="src\budget\const\__init__.py" />
     <Compile Include="src\budget\model\program_model.py" />
     <Compile Include="src\budget\model\__init__.py" />
+    <Compile Include="src\budget\program\exit_program.py" />
+    <Compile Include="src\budget\program\help_program.py" />
+    <Compile Include="src\budget\program\__init__.py" />
     <Compile Include="src\budget\service\command_service.py" />
     <Compile Include="src\budget\service\__init__.py" />
     <Compile Include="src\budget\util\color_util.py" />
