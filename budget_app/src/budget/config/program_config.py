@@ -19,13 +19,13 @@ class ProgramConfig:
                     )
                 },
                 arguments=["a", "b", "c"],
-                logic=self._exit_program.run_main_command
+                logic=self._exit_program.run_program
             ),
             "help": ProgramModel(
                 program="help",
                 command={},
                 arguments=["a", "b", "c"],
-                logic=self._help_program.run_main_command
+                logic=self._help_program.run_program
             )
         }
 
