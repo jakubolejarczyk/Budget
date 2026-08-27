@@ -23,4 +23,4 @@ ORDER BY c.category_id ASC;
 --SELECT * FROM expenses;
 
 --INSERT INTO expenses (budget_id, category_id, expense_amount)
---VALUES (1, 1, 51);
+--VALUES (1, 1, 10);
