@@ -1,6 +1,6 @@
 class ExitProgram:
-    def run_main_command(self, arguments):
-        return f"Exit main command works with arguments: {arguments}"
+    def run_program(self: ExitProgram, arguments: list[str]) -> str:
+        return f"Exit program works with arguments: {arguments}"
 
-    def run_help_command(self, arguments):
+    def run_help_command(self: ExitProgram, arguments: list[str]) -> str:
         return f"Exit help command works with arguments: {arguments}"

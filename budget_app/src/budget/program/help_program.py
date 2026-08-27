@@ -1,3 +1,3 @@
 class HelpProgram:
-    def run_main_command(self, arguments):
-        return f"Help main command works with arguments: {arguments}"
+    def run_program(self: HelpProgram, arguments: list[str]) -> str:
+        return f"Help program works with arguments: {arguments}"
