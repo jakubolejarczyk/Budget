@@ -25,6 +25,17 @@ class TestCmdParserService:
         )
         assert result == expect
 
+    def test_should_parse_when_first_item_is_not_program(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("--aaa")
+        expect = CmdParserModel(
+            program=None,
+            program_args=[],
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
     def test_should_parse_when_program_and_command_are_provided(self) -> None:
         cmd_parser_service = CmdParserService()
         result = cmd_parser_service.parse("aaa bbb")

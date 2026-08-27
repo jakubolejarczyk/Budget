@@ -14,7 +14,7 @@ class CmdParserService:
     def _get_program(self, cmd_items: list[str]) -> str | None:
         if len(cmd_items) > 0:
             program: str = cmd_items[0]
-            if program == "":
+            if program == "" or self._is_arg(program):
                 return None
             return program
         return None
