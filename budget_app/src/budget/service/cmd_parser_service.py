@@ -25,12 +25,13 @@ class CmdParserService:
         return program
 
     def _get_program_arguments(self, cmd_items: list[str]) -> list[str]:
-        arguments: list[str] = []
+        arguments: dict[str, str] = {}
         if len(cmd_items) <= 1:
-            return []
+            return {}
         for cmd_item in cmd_items[1:]:
             if self._is_arg(cmd_item):
-                arguments.append(cmd_item)
+                argument: dict[str, str] = self._create_argument(cmd_item)
+                arguments = arguments | argument
             else:
                 break
         return arguments
@@ -45,9 +46,9 @@ class CmdParserService:
         return ""
 
     def _get_command_arguments(self, cmd_items: list[str]) -> list[str]:
-        arguments: list[str] = []
+        arguments: dict[str, str] = {}
         if len(cmd_items) <= 1:
-            return []
+            return {}
         start_index = 0
         for cmd_item in cmd_items:
             if start_index == 0:
@@ -58,10 +59,23 @@ class CmdParserService:
                 break
         for cmd_item in cmd_items[start_index:]:
             if self._is_arg(cmd_item):
-                arguments.append(cmd_item)
+                argument: dict[str, str] = self._create_argument(cmd_item)
+                arguments = arguments | argument
         return arguments
 
     def _is_arg(self, cmd_item: str) -> bool:
         if cmd_item.startswith("-") or cmd_item.startswith("--"):
             return True
         return False
+
+    def _create_argument(self, cmd_item: str) -> dict[str, str]:
+        argument = cmd_item
+        if argument.startswith("--"):
+            argument = argument.replace("--", "")
+        elif argument.startswith("-"):
+            argument = argument.replace("-", "")
+        if "=" in argument:
+            argument_items = argument.split("=")
+            return {argument_items[0]: argument_items[1]}
+        else:
+            return {argument: ""}
