@@ -9,7 +9,7 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program=None,
             program_args=[],
-            command="",
+            command=None,
             command_args=[]
         )
         assert result == expect
@@ -20,7 +20,18 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_args=[],
-            command="",
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_when_program_and_command_are_provided(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("aaa bbb")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=[],
+            command="bbb",
             command_args=[]
         )
         assert result == expect
