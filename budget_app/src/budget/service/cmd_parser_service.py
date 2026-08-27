@@ -76,6 +76,10 @@ class CmdParserService:
             argument = argument.replace("-", "")
         if "=" in argument:
             argument_items = argument.split("=")
-            return {argument_items[0]: argument_items[1]}
+            name = argument_items[0]
+            value = argument_items[1]
+            if "," in value:
+                value = value.split(",")
+            return {name: value}
         else:
             return {argument: ""}

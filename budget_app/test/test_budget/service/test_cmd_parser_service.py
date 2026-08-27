@@ -152,11 +152,11 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": "1,2,3,4,5"
+                "a": ["1", "2", "3", "4", "5"]
             },
             command="bbb",
             command_arguments={
-                "bbb": "a,b,c,d,e"
+                "bbb": ["a", "b", "c", "d", "e"]
             }
         )
         assert result == expect
