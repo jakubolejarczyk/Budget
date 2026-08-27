@@ -14,7 +14,7 @@ class TestCmdParserService:
         )
         assert result == expect
 
-    def test_should_parse_when_only_program_is_provided(self) -> None:
+    def test_should_parse_cmd_program(self) -> None:
         cmd_parser_service = CmdParserService()
         result = cmd_parser_service.parse("aaa")
         expect = CmdParserModel(
@@ -25,7 +25,29 @@ class TestCmdParserService:
         )
         assert result == expect
 
-    def test_should_parse_when_first_item_is_not_program(self) -> None:
+    def test_should_parse_cmd_alias(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("-a")
+        expect = CmdParserModel(
+            program=None,
+            program_args=[],
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_alias_with_value(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("-a=bbb")
+        expect = CmdParserModel(
+            program=None,
+            program_args=[],
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_argument(self) -> None:
         cmd_parser_service = CmdParserService()
         result = cmd_parser_service.parse("--aaa")
         expect = CmdParserModel(
@@ -36,7 +58,18 @@ class TestCmdParserService:
         )
         assert result == expect
 
-    def test_should_parse_when_program_and_command_are_provided(self) -> None:
+    def test_should_parse_cmd_argument_with_value(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("--aaa=bbb")
+        expect = CmdParserModel(
+            program=None,
+            program_args=[],
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_command(self) -> None:
         cmd_parser_service = CmdParserService()
         result = cmd_parser_service.parse("aaa bbb")
         expect = CmdParserModel(
@@ -44,5 +77,73 @@ class TestCmdParserService:
             program_args=[],
             command="bbb",
             command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_arguments(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("aaa -a --bbb --ccc=ddd")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=["-a", "--bbb", "--ccc=ddd"],
+            command=None,
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_arguments_command(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("aaa -a --bbb --ccc=ddd bbb")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=["-a", "--bbb", "--ccc=ddd"],
+            command="bbb",
+            command_args=[]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_command_arguments(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse("aaa bbb -a --bbb --ccc=ddd")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=[],
+            command="bbb",
+            command_args=["-a", "--bbb", "--ccc=ddd"]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_arguments_command_arguments(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse(
+            "aaa -a --bbb --ccc=ddd bbb -a --bbb --ccc=ddd")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=["-a", "--bbb", "--ccc=ddd"],
+            command="bbb",
+            command_args=["-a", "--bbb", "--ccc=ddd"]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_arguments_command_arguments_multiple_values(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse(
+            "aaa -a=1,2,3,4,5 bbb --bbb=a,b,c,d,e")
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=["-a=1,2,3,4,5"],
+            command="bbb",
+            command_args=["--bbb=a,b,c,d,e"]
+        )
+        assert result == expect
+
+    def test_should_parse_cmd_program_arguments_command_arguments_quotation_marks(self) -> None:
+        cmd_parser_service = CmdParserService()
+        result = cmd_parser_service.parse('aaa -a="A" bbb --bbb="BBB"')
+        expect = CmdParserModel(
+            program="aaa",
+            program_args=['-a="A"'],
+            command="bbb",
+            command_args=['--bbb="BBB"']
         )
         assert result == expect
