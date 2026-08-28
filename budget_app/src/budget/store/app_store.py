@@ -1,5 +1,5 @@
 class AppStore:
-    is_running: bool = False
+    is_running: bool
 
     @staticmethod
     def init():
