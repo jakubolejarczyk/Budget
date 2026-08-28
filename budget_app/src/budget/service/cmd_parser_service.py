@@ -24,13 +24,14 @@ class CmdParserService:
             return ""
         return program
 
-    def _get_program_arguments(self, cmd_items: list[str]) -> list[str]:
+    def _get_program_arguments(self, cmd_items: list[str]) -> dict[str, dict[str, str | list[str]]]:
         arguments: dict[str, str] = {}
         if len(cmd_items) <= 1:
             return {}
         for cmd_item in cmd_items[1:]:
             if self._is_arg(cmd_item):
-                argument: dict[str, str] = self._create_argument(cmd_item)
+                argument: dict[str, str] = self._create_argument_alias(
+                    cmd_item)
                 arguments = arguments | argument
             else:
                 break
@@ -45,7 +46,7 @@ class CmdParserService:
             return cmd_item
         return ""
 
-    def _get_command_arguments(self, cmd_items: list[str]) -> list[str]:
+    def _get_command_arguments(self, cmd_items: list[str]) -> dict[str, dict[str, str | list[str]]]:
         arguments: dict[str, str] = {}
         if len(cmd_items) <= 1:
             return {}
@@ -59,7 +60,8 @@ class CmdParserService:
                 break
         for cmd_item in cmd_items[start_index:]:
             if self._is_arg(cmd_item):
-                argument: dict[str, str] = self._create_argument(cmd_item)
+                argument: dict[str, str] = self._create_argument_alias(
+                    cmd_item)
                 arguments = arguments | argument
         return arguments
 
@@ -68,18 +70,23 @@ class CmdParserService:
             return True
         return False
 
-    def _create_argument(self, cmd_item: str) -> dict[str, str]:
-        argument = cmd_item
-        if argument.startswith("--"):
-            argument = argument.replace("--", "")
-        elif argument.startswith("-"):
-            argument = argument.replace("-", "")
-        if "=" in argument:
-            argument_items = argument.split("=")
-            name = argument_items[0]
-            value = argument_items[1]
+    # The logic parses argument or alias from string to dictionary form
+    def _create_argument_alias(self, cmd_item: str) -> dict[str, dict[str, str | list[str]]]:
+        argument_alias = cmd_item.strip().replace("--", "").replace("-", "")
+        name: str
+        value: str
+        type: str
+        if "=" in argument_alias:
+            argument_alias_list = argument_alias.split("=")
+            name = argument_alias_list[0]
+            value = argument_alias_list[1]
             if "," in value:
                 value = value.split(",")
-            return {name: value}
         else:
-            return {argument: ""}
+            name = argument_alias
+            value = ""
+        if len(name) == 1:
+            type = "alias"
+        else:
+            type = "argument"
+        return {name: {"name": name, "value": value, "type": type}}

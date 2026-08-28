@@ -86,9 +86,21 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": "",
-                "bbb": "",
-                "ccc": "ddd"
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                },
+                "ccc": {
+                    "name": "ccc",
+                    "value": "ddd",
+                    "type": "argument"
+                }
             },
             command="",
             command_arguments={}
@@ -101,9 +113,21 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": "",
-                "bbb": "",
-                "ccc": "ddd"
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                },
+                "ccc": {
+                    "name": "ccc",
+                    "value": "ddd",
+                    "type": "argument"
+                }
             },
             command="bbb",
             command_arguments={}
@@ -118,9 +142,21 @@ class TestCmdParserService:
             program_arguments={},
             command="bbb",
             command_arguments={
-                "a": "",
-                "bbb": "",
-                "ccc": "ddd"
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                },
+                "ccc": {
+                    "name": "ccc",
+                    "value": "ddd",
+                    "type": "argument"
+                }
             }
         )
         assert result == expect
@@ -132,15 +168,39 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": "",
-                "bbb": "",
-                "ccc": "ddd"
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                },
+                "ccc": {
+                    "name": "ccc",
+                    "value": "ddd",
+                    "type": "argument"
+                }
             },
             command="bbb",
             command_arguments={
-                "a": "",
-                "bbb": "",
-                "ccc": "ddd"
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                },
+                "ccc": {
+                    "name": "ccc",
+                    "value": "ddd",
+                    "type": "argument"
+                }
             }
         )
         assert result == expect
@@ -152,11 +212,19 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": ["1", "2", "3", "4", "5"]
+                "a": {
+                    "name": "a",
+                    "value": ["1", "2", "3", "4", "5"],
+                    "type": "alias"
+                }
             },
             command="bbb",
             command_arguments={
-                "bbb": ["a", "b", "c", "d", "e"]
+                "bbb": {
+                    "name": "bbb",
+                    "value": ["a", "b", "c", "d", "e"],
+                    "type": "argument"
+                }
             }
         )
         assert result == expect
@@ -167,11 +235,19 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                'a': '"A"'
+                "a": {
+                    "name": "a",
+                    "value": '"A"',
+                    "type": "alias"
+                }
             },
             command="bbb",
             command_arguments={
-                "bbb": '"BBB"'
+                "bbb": {
+                    "name": "bbb",
+                    "value": '"BBB"',
+                    "type": "argument"
+                }
             }
         )
         assert result == expect
@@ -183,17 +259,49 @@ class TestCmdParserService:
         expect = CmdParserModel(
             program="aaa",
             program_arguments={
-                "a": "",
-                "bbb": ""
+                "a": {
+                    "name": "a",
+                    "value": "",
+                    "type": "alias"
+                },
+                "bbb": {
+                    "name": "bbb",
+                    "value": "",
+                    "type": "argument"
+                }
             },
             command="ccc",
             command_arguments={
-                "d": "",
-                "eee": "",
-                "g": "",
-                "hhh": "",
-                "j": "",
-                "kkk": ""
+                "d": {
+                    "name": "d",
+                    "value": "",
+                    "type": "alias"
+                },
+                "eee": {
+                    "name": "eee",
+                    "value": "",
+                    "type": "argument"
+                },
+                "g": {
+                    "name": "g",
+                    "value": "",
+                    "type": "alias"
+                },
+                "hhh": {
+                    "name": "hhh",
+                    "value": "",
+                    "type": "argument"
+                },
+                "j": {
+                    "name": "j",
+                    "value": "",
+                    "type": "alias"
+                },
+                "kkk": {
+                    "name": "kkk",
+                    "value": "",
+                    "type": "argument"
+                }
             }
         )
         assert result == expect
