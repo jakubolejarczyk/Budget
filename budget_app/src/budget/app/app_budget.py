@@ -20,6 +20,7 @@ class AppBudget:
         while AppStore.is_running:
             user_input = self._get_imput_service.get_input()
             cmd = self._cmd_parser_service.parse(user_input)
+            # TODO: Create the logic to select program based on cmd
             print(cmd)
 
     def _terminate(self) -> None:
