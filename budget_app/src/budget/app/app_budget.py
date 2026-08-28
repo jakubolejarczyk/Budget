@@ -1,10 +1,11 @@
-from budget.service import GetInputService
+from budget.service import GetInputService, CmdParserService
 from budget.store import AppStore
 
 
 class AppBudget:
     def __init__(self) -> None:
         self._get_imput_service = GetInputService()
+        self._cmd_parser_service = CmdParserService()
 
     def run(self) -> None:
         self._init()
@@ -18,8 +19,8 @@ class AppBudget:
     def _logic(self) -> None:
         while AppStore.is_running:
             user_input = self._get_imput_service.get_input()
-            if user_input == "exit":
-                AppStore.is_running = False
+            cmd = self._cmd_parser_service.parse(user_input)
+            print(cmd)
 
     def _terminate(self) -> None:
         AppStore.terminate()
