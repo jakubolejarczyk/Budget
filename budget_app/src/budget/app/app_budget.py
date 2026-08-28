@@ -1,7 +1,11 @@
+from budget.service import GetInputService
 from budget.store import AppStore
 
 
 class AppBudget:
+    def __init__(self) -> None:
+        self._get_imput_service = GetInputService()
+
     def run(self) -> None:
         self._init()
         while AppStore.is_running:
@@ -13,8 +17,8 @@ class AppBudget:
 
     def _logic(self) -> None:
         while AppStore.is_running:
-            command = input("> ")
-            if command == "exit":
+            user_input = self._get_imput_service.get_input()
+            if user_input == "exit":
                 AppStore.is_running = False
 
     def _terminate(self) -> None:
