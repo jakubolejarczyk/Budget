@@ -1,9 +1,9 @@
-from budget.app import AppBudget
+from budget.app import BudgetApp
 
 
 def main() -> None:
-    app_budget = AppBudget()
-    app_budget.run()
+    budget_app = BudgetApp()
+    budget_app.run()
 
 
 if __name__ == "__main__":

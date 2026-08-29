@@ -1,1 +1,1 @@
-from .app_budget import *
+from .budget_app import *
