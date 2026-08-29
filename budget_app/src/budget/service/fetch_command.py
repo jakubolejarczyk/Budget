@@ -1,7 +1,7 @@
 from budget.store import BudgetStore
 
 
-class FetchInputCommandService:
+class FetchCommandService:
     def fetch(self) -> None:
         BudgetStore.command = self._fetch_input()
 

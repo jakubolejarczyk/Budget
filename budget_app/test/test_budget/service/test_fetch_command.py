@@ -1,17 +1,17 @@
 from budget.store import BudgetStore
-from budget.service import FetchInputCommandService
+from budget.service import FetchCommandService
 
 
 class TestFetchInputCommandService:
-    def test_should_fetch_input_command_and_set_in_the_store_correctly(self, monkeypatch) -> None:
-        fetch_input_command_service = FetchInputCommandService()
+    def test_should_fetch_command_and_set_in_the_store_correctly(self, monkeypatch) -> None:
+        fetch_command_service = FetchCommandService()
         monkeypatch.setattr(
-            fetch_input_command_service,
+            fetch_command_service,
             "_fetch_input",
             self._fake_fetch_input
         )
         BudgetStore.init()
-        fetch_input_command_service.fetch()
+        fetch_command_service.fetch()
         received = BudgetStore.command
         expected = "aaa -b --cc --dd=ee fff -g --hh --ii=jj"
         BudgetStore.terminate()
