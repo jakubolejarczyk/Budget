@@ -1,9 +1,12 @@
+from budget.store import BudgetStore
+
+
 class BudgetLifeCycle:
     def init(self) -> None:
-        print("init")
+        BudgetStore.init()
 
     def process(self) -> None:
-        print("process")
+        print(BudgetStore.is_running)
 
     def terminate(self) -> None:
-        print("terminate")
+        BudgetStore.terminate()
