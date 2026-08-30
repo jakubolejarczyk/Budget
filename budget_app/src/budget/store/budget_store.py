@@ -1,6 +1,10 @@
+from budget.model import ProgramModel
+
+
 class BudgetStore:
     is_running: bool
     command: str
+    program: ProgramModel
 
     @staticmethod
     def init() -> None:
@@ -15,3 +19,4 @@ class BudgetStore:
     @staticmethod
     def _reset() -> None:
         BudgetStore.command = ""
+        BudgetStore.program = None

@@ -12,7 +12,7 @@ class BudgetLifeCycle:
     def process(self) -> None:
         while BudgetStore.is_running:
             self._fetch_command_service.fetch()
-            print(f"Result: {BudgetStore.command}")
+            print(f"Result: {BudgetStore.program}")
 
     def terminate(self) -> None:
         BudgetStore.terminate()
