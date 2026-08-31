@@ -1,90 +1,131 @@
+from budget.model import ProgramModel, CommandModel, ArgumentModel
+from budget.store import BudgetStore
+
+
 class ParseCommandService:
-    pass
-    # def parse(self, cmd: str) -> CmdParserModel:
-    #     cmd_items: list[str] = cmd.split(" ")
-    #     program: str = self._get_program(cmd_items)
-    #     program_arguments: str = self._get_program_arguments(cmd_items)
-    #     command: str = self._get_command(cmd_items)
-    #     command_arguments = self._get_command_arguments(cmd_items)
-    #     cmd_model: CmdParserModel = CmdParserModel(
-    #         program,
-    #         program_arguments,
-    #         command,
-    #         command_arguments
-    #     )
-    #     return cmd_model
+    def parse(self) -> None:
+        command_items = BudgetStore.command.split(" ")
+        program_name = self._get_program_name(command_items)
+        program_arguments = self._get_program_arguments(command_items)
+        command_name = self._get_command_name(command_items)
+        BudgetStore.program = ProgramModel(
+            name=program_name,
+            arguments=program_arguments,
+            command=CommandModel(
+                name=command_name,
+                arguments=self._get_command_arguments(command_items)
+            )
+        )
 
-    # def _get_program(self, cmd_items: list[str]) -> str:
-    #     if len(cmd_items) == 0:
-    #         return ""
-    #     program = cmd_items[0]
-    #     if self._is_arg(program):
-    #         return ""
-    #     return program
+    def _get_program_name(self, command_items: list[str]) -> str:
+        if len(command_items) <= 0:
+            return ""
+        program_name = command_items[0]
+        if self._is_alias(program_name) or self._is_argument(program_name):
+            return ""
+        return program_name
 
-    # def _get_program_arguments(self, cmd_items: list[str]) -> dict[str, dict[str, str | list[str]]]:
-    #     arguments: dict[str, str] = {}
-    #     if len(cmd_items) <= 1:
-    #         return {}
-    #     for cmd_item in cmd_items[1:]:
-    #         if self._is_arg(cmd_item):
-    #             argument: dict[str, str] = self._create_argument_alias(
-    #                 cmd_item)
-    #             arguments = arguments | argument
-    #         else:
-    #             break
-    #     return arguments
+    def _get_program_arguments(self, command_items: list[str]) -> list[ArgumentModel]:
+        arguments: list[ArgumentModel] = []
+        if len(command_items) <= 1:
+            return arguments
+        for command_item in command_items[1:]:
+            if self._is_argument(command_item):
+                arguments.append(self._create_argument(command_item))
+            elif self._is_alias(command_item):
+                arguments.append(self._create_alias(command_item))
+            else:
+                break
+        return arguments
 
-    # def _get_command(self, cmd_items: list[str]) -> str:
-    #     if len(cmd_items) <= 1:
-    #         return ""
-    #     for cmd_item in cmd_items[1:]:
-    #         if self._is_arg(cmd_item):
-    #             continue
-    #         return cmd_item
-    #     return ""
+    def _get_command_name(self, command_items: list[str]) -> str:
+        if len(command_items) <= 1:
+            return ""
+        for command_item in command_items[1:]:
+            if not self._is_alias(command_item) and not self._is_argument(command_item):
+                return command_item
+        return ""
 
-    # def _get_command_arguments(self, cmd_items: list[str]) -> dict[str, dict[str, str | list[str]]]:
-    #     arguments: dict[str, str] = {}
-    #     if len(cmd_items) <= 1:
-    #         return {}
-    #     start_index = 0
-    #     for cmd_item in cmd_items:
-    #         if start_index == 0:
-    #             start_index += 1
-    #             continue
-    #         start_index += 1
-    #         if not self._is_arg(cmd_item):
-    #             break
-    #     for cmd_item in cmd_items[start_index:]:
-    #         if self._is_arg(cmd_item):
-    #             argument: dict[str, str] = self._create_argument_alias(
-    #                 cmd_item)
-    #             arguments = arguments | argument
-    #     return arguments
+    def _get_command_arguments(self, command_items: list[str]) -> list[ArgumentModel]:
+        arguments: list[ArgumentModel] = []
+        if len(command_items) <= 1:
+            return arguments
+        command_index = 1
+        for command_item in command_items[1:]:
+            if not self._is_alias(command_item) and not self._is_argument(command_item):
+                command_index += 1
+                break
+            else:
+                command_index += 1
+        for command_item in command_items[command_index:]:
+            if self._is_argument(command_item):
+                arguments.append(self._create_argument(command_item))
+            elif self._is_alias(command_item):
+                arguments.append(self._create_alias(command_item))
+        return arguments
 
-    # def _is_arg(self, cmd_item: str) -> bool:
-    #     if cmd_item.startswith("-") or cmd_item.startswith("--"):
-    #         return True
-    #     return False
+    def _is_argument(self, command_item: str) -> bool:
+        return command_item.startswith("--")
 
-    # # The logic parses argument or alias from string to dictionary form
-    # def _create_argument_alias(self, cmd_item: str) -> dict[str, dict[str, str | list[str]]]:
-    #     argument_alias = cmd_item.strip().replace("--", "").replace("-", "")
-    #     name: str
-    #     value: str
-    #     type: str
-    #     if "=" in argument_alias:
-    #         argument_alias_list = argument_alias.split("=")
-    #         name = argument_alias_list[0]
-    #         value = argument_alias_list[1]
-    #         if "," in value:
-    #             value = value.split(",")
-    #     else:
-    #         name = argument_alias
-    #         value = ""
-    #     if len(name) == 1:
-    #         type = "alias"
-    #     else:
-    #         type = "argument"
-    #     return {name: {"name": name, "value": value, "type": type}}
+    def _is_alias(self, command_item: str) -> bool:
+        return command_item.startswith("-")
+
+    def _create_argument(self, command_item: str) -> ArgumentModel:
+        argument = command_item.replace("--", "")
+        name: str
+        value: str
+        has_value: bool
+        has_multiple_values: bool
+        if "=" in argument:
+            argument_items = argument.split("=")
+            name = argument_items[0]
+            value = argument_items[1]
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
+                value = value[1:-1]
+            has_value = True
+            has_multiple_values = False
+            if "," in value:
+                value = value.split(",")
+                has_multiple_values = True
+        else:
+            name = argument
+            value = ""
+            has_value = False
+            has_multiple_values = False
+        return ArgumentModel(
+            name=name,
+            value=value,
+            has_value=has_value,
+            has_multiple_values=has_multiple_values,
+            type="argument"
+        )
+
+    def _create_alias(self, command_item: str) -> ArgumentModel:
+        alias = command_item.replace("-", "")
+        name: str
+        value: str
+        has_value: bool
+        has_multiple_values: bool
+        if "=" in alias:
+            alias_items = alias.split("=")
+            name = alias_items[0]
+            value = alias_items[1]
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
+                value = value[1:-1]
+            has_value = True
+            has_multiple_values = False
+            if "," in value:
+                value = value.split(",")
+                has_multiple_values = True
+        else:
+            name = alias
+            value = ""
+            has_value = False
+            has_multiple_values = False
+        return ArgumentModel(
+            name=name,
+            value=value,
+            has_value=has_value,
+            has_multiple_values=has_multiple_values,
+            type="alias"
+        )
