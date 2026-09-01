@@ -1,6 +1,7 @@
-from budget.store import AppStore
+from budget.store import BudgetStore
+from budget.model import ProgramModel
 
 
 class ExitLogic:
-    def run(self) -> None:
-        AppStore.is_running = False
+    def run(self, program: ProgramModel) -> None:
+        BudgetStore.is_running = False
