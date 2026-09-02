@@ -1,11 +1,14 @@
 from budget.config import ProgramConfig
-from budget.model import ProgramModel
 from budget.store import BudgetStore
 
 
 class ProgramService:
     def run(self) -> None:
-        program: ProgramModel = BudgetStore.program
-        program_config = ProgramConfig.PROGRAM_CONFIG.get(program.name)
-        if program_config is not None:
-            program_config.logic(program)
+        program = BudgetStore.program
+        if program.name in ProgramConfig.PROGRAM_CONFIG:
+            logic = ProgramConfig.PROGRAM_CONFIG.get(program.name).logic
+            logic(program.name, program.arguments)
+        else:
+            program_name = "unknown_program"
+            logic = ProgramConfig.PROGRAM_CONFIG.get(program_name).logic
+            logic(program.name, program.arguments)
