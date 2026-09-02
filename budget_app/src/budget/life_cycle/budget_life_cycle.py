@@ -16,6 +16,7 @@ class BudgetLifeCycle:
             self._fetch_command_service.fetch()
             self._parse_command_service.parse()
             self._program_service.run()
+            print(BudgetStore.answer)
 
     def terminate(self) -> None:
         BudgetStore.terminate()
