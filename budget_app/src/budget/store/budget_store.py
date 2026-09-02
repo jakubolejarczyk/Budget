@@ -5,6 +5,7 @@ class BudgetStore:
     is_running: bool
     command: str
     program: ProgramModel
+    answer: str
 
     @staticmethod
     def init() -> None:
@@ -20,3 +21,4 @@ class BudgetStore:
     def _reset() -> None:
         BudgetStore.command = ""
         BudgetStore.program = None
+        BudgetStore.answer = ""

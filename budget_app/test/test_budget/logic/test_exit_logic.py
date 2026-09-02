@@ -11,3 +11,12 @@ class TestExitLogic:
         received = BudgetStore.is_running
         BudgetStore.terminate()
         assert received == expected
+
+    def test_exit_logic_should_set_answer_correctly(self) -> None:
+        BudgetStore.init()
+        exit_logic = ExitLogic()
+        exit_logic.run()
+        expected = "The application has exited."
+        received = BudgetStore.answer
+        BudgetStore.terminate()
+        assert received == expected
