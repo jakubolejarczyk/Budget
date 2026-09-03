@@ -1,5 +1,5 @@
 from budget.model import ProgramConfigModel
-from budget.logic import ExitLogic, UnknownProgramLogic
+from budget.logic import ExitLogic, UnknownProgramLogic, TestLogic
 
 
 class ProgramConfig:
@@ -7,6 +7,10 @@ class ProgramConfig:
         "exit": ProgramConfigModel(
             name="exit",
             logic=ExitLogic().run,
+        ),
+        "test": ProgramConfigModel(
+            name="test",
+            logic=TestLogic().run,
         ),
         "unknown_program": ProgramConfigModel(
             name="unknown_program",

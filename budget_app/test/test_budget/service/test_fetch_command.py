@@ -1,3 +1,4 @@
+from budget.life_cycle import BudgetLifeCycle
 from budget.store import BudgetStore
 from budget.service import FetchCommandService
 
@@ -10,11 +11,12 @@ class TestFetchInputCommandService:
             "_fetch_input",
             self._fake_fetch_input
         )
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         fetch_command_service.fetch()
         received = BudgetStore.command
         expected = "aaa -b --cc --dd=ee fff -g --hh --ii=jj"
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def _fake_fetch_input(self) -> str:

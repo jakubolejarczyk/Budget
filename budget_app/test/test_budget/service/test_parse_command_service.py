@@ -1,3 +1,4 @@
+from budget.life_cycle import BudgetLifeCycle
 from budget.service import ParseCommandService
 from budget.store import BudgetStore
 from budget.model import ProgramModel, CommandModel, ArgumentModel
@@ -6,7 +7,8 @@ from budget.model import ProgramModel, CommandModel, ArgumentModel
 class TestParseCommandService:
     def test_should_parse_empty_command_to_empty_model(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = ""
         parse_command_service.parse()
         received = BudgetStore.program
@@ -18,12 +20,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -35,12 +38,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_alias(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "-a"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -52,12 +56,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_alias_with_value(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "-a=b"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -69,12 +74,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_alias_with_multiple_values(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "-a=b,c,d"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -86,12 +92,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_argument(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "--aaa"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -103,12 +110,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_argument_with_value(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "--aaa=bbb"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -120,12 +128,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_skip_program_name_when_is_argument_with_multiple_values(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "--aaa=bbb,ccc,ddd"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -137,12 +146,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_command(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa bbb"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -154,12 +164,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_arguments(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -214,12 +225,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_arguments_command(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn bbb"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -274,12 +286,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_command_arguments(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa bbb -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -334,12 +347,13 @@ class TestParseCommandService:
                 ]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_arguments_command_arguments(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn bbb -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -437,12 +451,13 @@ class TestParseCommandService:
                 ]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_arguments_quotation_marks(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa -b='c' --iii=\"jjj\""
         parse_command_service.parse()
         received = BudgetStore.program
@@ -469,12 +484,13 @@ class TestParseCommandService:
                 arguments=[]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
 
     def test_should_parse_command_to_model_with_program_command_arguments_ignore_too_many_commands(self) -> None:
         parse_command_service = ParseCommandService()
-        BudgetStore.init()
+        budget_life_cycle = BudgetLifeCycle()
+        budget_life_cycle.init()
         BudgetStore.command = "aaa bbb -a -b=c -d=e,f,g ccc --hhh --iii=jjj ddd --kkk=lll,mmm,nnn eee"
         parse_command_service.parse()
         received = BudgetStore.program
@@ -529,5 +545,5 @@ class TestParseCommandService:
                 ]
             )
         )
-        BudgetStore.terminate()
+        budget_life_cycle.terminate()
         assert received == expected
