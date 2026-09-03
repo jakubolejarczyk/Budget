@@ -3,5 +3,6 @@ Name: budget_app
 Version: 1.0.0
 Summary: The budget manager written in Python
 Requires-Python: >=3.14.7
+Requires-Dist: mssql-python>=1.14.0
 Provides-Extra: dev
 Requires-Dist: pytest>=9.1.1; extra == "dev"
