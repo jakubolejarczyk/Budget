@@ -13,3 +13,4 @@ class InitStoreStep:
         )
         Store.connection_string = ""
         Store.cursor = None
+        Store.is_running = True

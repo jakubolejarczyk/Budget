@@ -10,3 +10,4 @@ class TerminateStoreStep:
         Store.trust_server_certificate = None
         Store.connection_string = None
         Store.cursor = None
+        Store.is_running = False

@@ -9,3 +9,5 @@ class Store:
     trust_server_certificate: str
     connection_string: str
     cursor: Cursor
+    is_running: bool
+    command: str
