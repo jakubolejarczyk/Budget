@@ -1,6 +1,6 @@
 from budget.store import Store
 
 
-class InitStoreStep:
+class TerminateStoreStep:
     def run(self) -> None:
-        Store.init()
+        Store.terminate()
