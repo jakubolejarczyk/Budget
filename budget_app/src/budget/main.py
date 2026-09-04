@@ -1,6 +1,6 @@
-from budget.app import BudgetApp
+from budget.app import App
 
 
 def main() -> None:
-    budget_app = BudgetApp()
-    budget_app.run()
+    app = App()
+    app.run()
