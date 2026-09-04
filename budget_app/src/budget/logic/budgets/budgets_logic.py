@@ -2,17 +2,17 @@ from .budgets_logic_model import CreateBudgetModel, ReadBudgetModel, UpdateBudge
 
 
 class BudgetsLogic:
-    def create_budget(self, model: CreateBudgetModel) -> None:
-        pass
+    def create_budget(self, model: CreateBudgetModel) -> str:
+        return "create_budget"
 
-    def read_budget(self, model: ReadBudgetModel) -> None:
-        pass
+    def read_budget(self, model: ReadBudgetModel) -> str:
+        return "read_budget"
 
-    def read_budgets(self) -> None:
-        pass
+    def read_budgets(self) -> str:
+        return "read_budgets"
 
-    def update_budget(self, model: UpdateBudgetModel) -> None:
-        pass
+    def update_budget(self, model: UpdateBudgetModel) -> str:
+        return "update_budget"
 
-    def delete_budget(self, model: DeleteBudgetModel) -> None:
-        pass
+    def delete_budget(self, model: DeleteBudgetModel) -> str:
+        return "delete_budget"
