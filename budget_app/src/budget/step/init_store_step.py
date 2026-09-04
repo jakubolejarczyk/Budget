@@ -12,3 +12,4 @@ class InitStoreStep:
             "TRUST_SERVER_CERTIFICATE"
         )
         Store.connection_string = ""
+        Store.cursor = None

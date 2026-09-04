@@ -9,3 +9,4 @@ class TerminateStoreStep:
         Store.trusted_connection = None
         Store.trust_server_certificate = None
         Store.connection_string = None
+        Store.cursor = None

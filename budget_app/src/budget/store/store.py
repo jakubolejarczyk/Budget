@@ -1,3 +1,6 @@
+from mssql_python import Cursor
+
+
 class Store:
     server: str
     database: str
@@ -5,3 +8,4 @@ class Store:
     trusted_connection: str
     trust_server_certificate: str
     connection_string: str
+    cursor: Cursor
