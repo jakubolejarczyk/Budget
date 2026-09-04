@@ -1,3 +1,9 @@
+from budget.step import InitStoreStep
+
+
 class InitLifeCycle:
+    def __init__(self) -> None:
+        self._init_store_step = InitStoreStep()
+
     def run(self) -> None:
-        print("Init Life Cycle is running...")
+        self._init_store_step.run()
