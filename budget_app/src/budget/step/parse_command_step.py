@@ -3,7 +3,7 @@ from budget.store import Store
 
 
 class ParseCommandStep:
-    def parse(self) -> None:
+    def run(self) -> None:
         command_items = Store.command.split(" ")
         program_name = self._get_program_name(command_items)
         program_arguments = self._get_program_arguments(command_items)

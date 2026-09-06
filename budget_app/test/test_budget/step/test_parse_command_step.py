@@ -9,7 +9,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = ""
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -26,7 +26,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -43,7 +43,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "-a"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -60,7 +60,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "-a=b"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -77,7 +77,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "-a=b,c,d"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -94,7 +94,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "--aaa"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -111,7 +111,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "--aaa=bbb"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -128,7 +128,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "--aaa=bbb,ccc,ddd"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="",
@@ -145,7 +145,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa bbb"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -162,7 +162,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -222,7 +222,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn bbb"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -282,7 +282,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa bbb -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -342,7 +342,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn bbb -a -b=c -d=e,f,g --hhh --iii=jjj --kkk=lll,mmm,nnn"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -445,7 +445,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa -b='c' --iii=\"jjj\""
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
@@ -477,7 +477,7 @@ class TestParseCommandService:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
         Store.command = "aaa bbb -a -b=c -d=e,f,g ccc --hhh --iii=jjj ddd --kkk=lll,mmm,nnn eee"
-        parse_command_service.parse()
+        parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
             name="aaa",
