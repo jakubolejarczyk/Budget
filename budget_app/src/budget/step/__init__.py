@@ -3,4 +3,5 @@ from .create_connection_string_step import *
 from .fetch_command_step import *
 from .init_store_step import *
 from .load_env_step import *
+from .parse_command_step import *
 from .terminate_store_step import *

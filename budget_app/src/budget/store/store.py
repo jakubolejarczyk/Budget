@@ -1,4 +1,5 @@
 from mssql_python import Cursor
+from budget.model import ProgramModel
 
 
 class Store:
@@ -11,3 +12,4 @@ class Store:
     cursor: Cursor
     is_running: bool
     command: str
+    program: ProgramModel

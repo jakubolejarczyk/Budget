@@ -1,14 +1,14 @@
 from budget.model import ProgramModel, CommandModel, ArgumentModel
-from budget.store import BudgetStore
+from budget.store import Store
 
 
-class ParseCommandService:
+class ParseCommandStep:
     def parse(self) -> None:
-        command_items = BudgetStore.command.split(" ")
+        command_items = Store.command.split(" ")
         program_name = self._get_program_name(command_items)
         program_arguments = self._get_program_arguments(command_items)
         command_name = self._get_command_name(command_items)
-        BudgetStore.program = ProgramModel(
+        Store.program = ProgramModel(
             name=program_name,
             arguments=program_arguments,
             command=CommandModel(
