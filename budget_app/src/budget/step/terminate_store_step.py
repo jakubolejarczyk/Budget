@@ -11,3 +11,5 @@ class TerminateStoreStep:
         Store.connection_string = None
         Store.cursor = None
         Store.is_running = False
+        Store.command = None
+        Store.program = None
