@@ -4,5 +4,5 @@ from .argument_model import ArgumentModel
 
 @dataclass
 class CommandModel:
-    name: str
+    name: str | None
     arguments: list[ArgumentModel]

@@ -4,25 +4,22 @@ from budget.store import Store
 
 class ParseCommandStep:
     def run(self) -> None:
-        command_items = Store.command.split(" ")
-        program_name = self._get_program_name(command_items)
-        program_arguments = self._get_program_arguments(command_items)
-        command_name = self._get_command_name(command_items)
+        command_items = Store.command.split()
         Store.program = ProgramModel(
-            name=program_name,
-            arguments=program_arguments,
+            name=self._get_program_name(command_items),
+            arguments=self._get_program_arguments(command_items),
             command=CommandModel(
-                name=command_name,
+                name=self._get_command_name(command_items),
                 arguments=self._get_command_arguments(command_items)
             )
         )
 
-    def _get_program_name(self, command_items: list[str]) -> str:
+    def _get_program_name(self, command_items: list[str]) -> str | None:
         if len(command_items) <= 0:
-            return ""
+            return None
         program_name = command_items[0]
-        if self._is_alias(program_name) or self._is_argument(program_name):
-            return ""
+        if self._is_argument(program_name) or self._is_alias(program_name):
+            return None
         return program_name
 
     def _get_program_arguments(self, command_items: list[str]) -> list[ArgumentModel]:
@@ -31,37 +28,39 @@ class ParseCommandStep:
             return arguments
         for command_item in command_items[1:]:
             if self._is_argument(command_item):
-                arguments.append(self._create_argument(command_item))
+                argument = self._create_argument_alias(command_item, "--")
+                arguments.append(argument)
             elif self._is_alias(command_item):
-                arguments.append(self._create_alias(command_item))
+                alias = self._create_argument_alias(command_item, "-")
+                arguments.append(alias)
             else:
                 break
         return arguments
 
-    def _get_command_name(self, command_items: list[str]) -> str:
+    def _get_command_name(self, command_items: list[str]) -> str | None:
         if len(command_items) <= 1:
-            return ""
+            return None
         for command_item in command_items[1:]:
-            if not self._is_alias(command_item) and not self._is_argument(command_item):
+            if not self._is_argument(command_item) and not self._is_alias(command_item):
                 return command_item
-        return ""
+        return None
 
     def _get_command_arguments(self, command_items: list[str]) -> list[ArgumentModel]:
         arguments: list[ArgumentModel] = []
-        if len(command_items) <= 1:
+        if len(command_items) <= 2:
             return arguments
         command_index = 1
         for command_item in command_items[1:]:
+            command_index += 1
             if not self._is_alias(command_item) and not self._is_argument(command_item):
-                command_index += 1
                 break
-            else:
-                command_index += 1
         for command_item in command_items[command_index:]:
             if self._is_argument(command_item):
-                arguments.append(self._create_argument(command_item))
+                argument = self._create_argument_alias(command_item, "--")
+                arguments.append(argument)
             elif self._is_alias(command_item):
-                arguments.append(self._create_alias(command_item))
+                alias = self._create_argument_alias(command_item, "-")
+                arguments.append(alias)
         return arguments
 
     def _is_argument(self, command_item: str) -> bool:
@@ -70,12 +69,13 @@ class ParseCommandStep:
     def _is_alias(self, command_item: str) -> bool:
         return command_item.startswith("-")
 
-    def _create_argument(self, command_item: str) -> ArgumentModel:
-        argument = command_item.replace("--", "")
+    def _create_argument_alias(self, command_item: str, prefix: str) -> ArgumentModel:
+        argument = command_item.replace(prefix, "")
         name: str
-        value: str
+        value: str | list[str] | None
         has_value: bool
         has_multiple_values: bool
+        type: str
         if "=" in argument:
             argument_items = argument.split("=")
             name = argument_items[0]
@@ -89,43 +89,17 @@ class ParseCommandStep:
                 has_multiple_values = True
         else:
             name = argument
-            value = ""
+            value = None
             has_value = False
             has_multiple_values = False
-        return ArgumentModel(
-            name=name,
-            value=value,
-            has_value=has_value,
-            has_multiple_values=has_multiple_values,
-            type="argument"
-        )
-
-    def _create_alias(self, command_item: str) -> ArgumentModel:
-        alias = command_item.replace("-", "")
-        name: str
-        value: str
-        has_value: bool
-        has_multiple_values: bool
-        if "=" in alias:
-            alias_items = alias.split("=")
-            name = alias_items[0]
-            value = alias_items[1]
-            if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
-                value = value[1:-1]
-            has_value = True
-            has_multiple_values = False
-            if "," in value:
-                value = value.split(",")
-                has_multiple_values = True
+        if prefix == "--":
+            type = "argument"
         else:
-            name = alias
-            value = ""
-            has_value = False
-            has_multiple_values = False
+            type = "alias"
         return ArgumentModel(
             name=name,
             value=value,
             has_value=has_value,
             has_multiple_values=has_multiple_values,
-            type="alias"
+            type=type
         )

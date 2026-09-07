@@ -5,6 +5,6 @@ from .command_model import CommandModel
 
 @dataclass
 class ProgramModel:
-    name: str
+    name: str | None
     arguments: list[ArgumentModel]
     command: CommandModel

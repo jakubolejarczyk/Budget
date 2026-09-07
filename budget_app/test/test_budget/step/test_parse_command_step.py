@@ -12,10 +12,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -32,7 +32,7 @@ class TestParseCommandService:
             name="aaa",
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -46,10 +46,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -63,10 +63,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -80,10 +80,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -97,10 +97,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -114,10 +114,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -131,10 +131,10 @@ class TestParseCommandService:
         parse_command_service.run()
         received = Store.program
         expected = ProgramModel(
-            name="",
+            name=None,
             arguments=[],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -169,7 +169,7 @@ class TestParseCommandService:
             arguments=[
                 ArgumentModel(
                     name="a",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="alias"
@@ -190,7 +190,7 @@ class TestParseCommandService:
                 ),
                 ArgumentModel(
                     name="hhh",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="argument"
@@ -211,7 +211,7 @@ class TestParseCommandService:
                 ),
             ],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -229,7 +229,7 @@ class TestParseCommandService:
             arguments=[
                 ArgumentModel(
                     name="a",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="alias"
@@ -250,7 +250,7 @@ class TestParseCommandService:
                 ),
                 ArgumentModel(
                     name="hhh",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="argument"
@@ -292,7 +292,7 @@ class TestParseCommandService:
                 arguments=[
                     ArgumentModel(
                         name="a",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="alias"
@@ -313,7 +313,7 @@ class TestParseCommandService:
                     ),
                     ArgumentModel(
                         name="hhh",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="argument"
@@ -349,7 +349,7 @@ class TestParseCommandService:
             arguments=[
                 ArgumentModel(
                     name="a",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="alias"
@@ -370,7 +370,7 @@ class TestParseCommandService:
                 ),
                 ArgumentModel(
                     name="hhh",
-                    value="",
+                    value=None,
                     has_value=False,
                     has_multiple_values=False,
                     type="argument"
@@ -395,7 +395,7 @@ class TestParseCommandService:
                 arguments=[
                     ArgumentModel(
                         name="a",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="alias"
@@ -416,7 +416,7 @@ class TestParseCommandService:
                     ),
                     ArgumentModel(
                         name="hhh",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="argument"
@@ -466,7 +466,7 @@ class TestParseCommandService:
                 ),
             ],
             command=CommandModel(
-                name="",
+                name=None,
                 arguments=[]
             )
         )
@@ -487,7 +487,7 @@ class TestParseCommandService:
                 arguments=[
                     ArgumentModel(
                         name="a",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="alias"
@@ -508,7 +508,7 @@ class TestParseCommandService:
                     ),
                     ArgumentModel(
                         name="hhh",
-                        value="",
+                        value=None,
                         has_value=False,
                         has_multiple_values=False,
                         type="argument"
