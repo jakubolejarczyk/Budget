@@ -4,7 +4,7 @@ from budget.store import Store
 from budget.model import ProgramModel, CommandModel, ArgumentModel
 
 
-class TestParseCommandService:
+class TestParseCommandStep:
     def test_should_parse_empty_command_to_empty_model(self) -> None:
         parse_command_service = ParseCommandStep()
         InitLifeCycle().run()
