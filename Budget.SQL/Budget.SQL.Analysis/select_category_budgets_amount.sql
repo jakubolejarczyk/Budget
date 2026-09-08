@@ -14,4 +14,4 @@ LEFT JOIN category_budgets AS cb
 ON b.budget_id = cb.budget_id
 LEFT JOIN categories AS c
 ON c.category_id = cb.category_id
-WHERE b.budget_month = 8 AND b.budget_year = 2026;
+WHERE b.budget_month = 9 AND b.budget_year = 2026;
