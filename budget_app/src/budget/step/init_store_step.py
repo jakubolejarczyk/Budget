@@ -16,3 +16,5 @@ class InitStoreStep:
         Store.is_running = True
         Store.command = None
         Store.program = None
+        Store.selected_program_config = None
+        Store.selected_command_config = None

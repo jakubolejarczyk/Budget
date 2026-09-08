@@ -13,3 +13,5 @@ class TerminateStoreStep:
         Store.is_running = False
         Store.command = None
         Store.program = None
+        Store.selected_program_config = None
+        Store.selected_command_config = None
