@@ -9,9 +9,9 @@ class CheckArgumentsStep:
         if config:
             config_arguments = config.arguments
         for config_argument in config_arguments:
-            self._check_is_required(config_argument, arguments)
+            self._check_is_required(config_argument, arguments, config)
 
-    def _check_is_required(self, config_argument: ArgumentConfigModel, arguments: list[ArgumentModel]) -> None:
+    def _check_is_required(self, config_argument: ArgumentConfigModel, arguments: list[ArgumentModel], config: ProgramConfigModel | CommandConfigModel) -> None:
         if config_argument.is_required == False:
             return
         for argument in arguments:
@@ -20,5 +20,5 @@ class CheckArgumentsStep:
             elif argument.name == config_argument.alias and argument.type == "alias":
                 return
         Store.are_arguments_correct = False
-        error = f'Parameter "{config_argument.name}" is required but was not provided.'
+        error = f'Parameter "{config_argument.name}" is required for entity "{config.name}" but was not provided.'
         print(error)
