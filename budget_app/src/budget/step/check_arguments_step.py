@@ -12,6 +12,8 @@ class CheckArgumentsStep:
             self._check_is_required(config_argument, arguments)
 
     def _check_is_required(self, config_argument: ArgumentConfigModel, arguments: list[ArgumentModel]) -> None:
+        if config_argument.is_required == False:
+            return
         for argument in arguments:
             if argument.name == config_argument.name and argument.type == "argument":
                 return
