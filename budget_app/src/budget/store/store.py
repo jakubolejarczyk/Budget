@@ -15,3 +15,4 @@ class Store:
     program: ProgramModel
     selected_program_config: ProgramConfigModel
     selected_command_config: CommandConfigModel
+    are_arguments_correct: bool

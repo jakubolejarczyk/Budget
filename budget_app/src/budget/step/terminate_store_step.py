@@ -15,3 +15,4 @@ class TerminateStoreStep:
         Store.program = None
         Store.selected_program_config = None
         Store.selected_command_config = None
+        Store.are_arguments_correct = True
