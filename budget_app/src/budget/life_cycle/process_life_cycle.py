@@ -15,11 +15,11 @@ class ProcessLifeCycle:
             self._parse_command_step.run()
             self._get_program_step.run()
             self._check_arguments_step.run(
-                Store.program.arguments,
-                Store.selected_program_config
+                Store.selected_program_config,
+                Store.program.arguments
             )
             self._check_arguments_step.run(
-                Store.program.command.arguments,
-                Store.selected_command_config
+                Store.selected_command_config,
+                Store.program.command.arguments
             )
             print(f"Are arguments correct: {Store.are_arguments_correct}")
