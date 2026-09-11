@@ -81,6 +81,8 @@ class CheckArgumentsStep:
                 break
         if current_argument is None:
             return
+        if current_argument.value is None:
+            return
         if config_argument.type == "str" and type(current_argument.value) == "str":
             return
         if config_argument.type == "int" and ParseUtil.try_parse_int(current_argument.value):
