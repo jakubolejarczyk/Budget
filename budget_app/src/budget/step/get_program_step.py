@@ -1,11 +1,17 @@
 from budget.store import Store
 from budget.config import ProgramConfig
 from budget.model import ProgramConfigModel, CommandConfigModel
+from budget.util import ColorUtil, ConsoleColor
 
 
 class GetProgramStep:
     def run(self) -> None:
+        ColorUtil.set_color(ConsoleColor.RED)
         program_config = self._get_program()
+        if program_config is None:
+            Store.are_arguments_correct = False
+            print('Invalid program.')
+            return
         Store.selected_program_config = program_config
         if program_config:
             command_config = self._get_command(program_config)
@@ -15,6 +21,7 @@ class GetProgramStep:
                 Store.selected_command_config = None
         else:
             Store.selected_command_config = None
+        ColorUtil.set_color(ConsoleColor.RESET)
 
     def _get_program(self) -> ProgramConfigModel:
         for program in ProgramConfig.PROGRAM_CONFIG:

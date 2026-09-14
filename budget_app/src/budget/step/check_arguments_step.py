@@ -1,16 +1,18 @@
 from budget.model import ArgumentModel, ProgramConfigModel, CommandConfigModel, ArgumentConfigModel
 from budget.store import Store
 from budget.util import ParseUtil
+from budget.util import ColorUtil, ConsoleColor
 
 
 class CheckArgumentsStep:
     def run(self, config: ProgramConfigModel | CommandConfigModel, arguments: list[ArgumentModel]) -> None:
-        Store.are_arguments_correct = True
+        ColorUtil.set_color(ConsoleColor.RED)
         config_arguments: list[ArgumentConfigModel] = []
         if config:
             config_arguments = config.arguments
         for config_argument in config_arguments:
             self._check_argument(config, config_argument, arguments)
+        ColorUtil.set_color(ConsoleColor.RESET)
 
     def _check_argument(self, config: ProgramConfigModel | CommandConfigModel, config_argument: ArgumentConfigModel, arguments: list[ArgumentModel]) -> None:
         self._check_is_required_validator(config, config_argument, arguments)
