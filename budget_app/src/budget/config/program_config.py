@@ -1,4 +1,5 @@
-from budget.model import ProgramConfigModel, CommandConfigModel, ArgumentConfigModel
+from budget.model import ProgramConfigModel, ArgumentConfigModel, CommandConfigModel
+from budget.logic.budgets.budgets_logic import BudgetsLogic
 
 
 class ProgramConfig:
@@ -6,6 +7,7 @@ class ProgramConfig:
         ProgramConfigModel(
             name="budget",
             arguments=[],
+            logic=BudgetsLogic().run,
             commands=[
                 CommandConfigModel(
                     name="create",
@@ -43,6 +45,7 @@ class ProgramConfig:
         ),
         ProgramConfigModel(
             name="exit",
+            logic=BudgetsLogic().run,
             arguments=[],
             commands=[]
         )
